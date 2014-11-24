@@ -1,4 +1,5 @@
 class Player
+
 	attr_accessor :choice
 	attr_reader :name
 	def initialize(n)
@@ -24,7 +25,7 @@ end
 
 class Opponent
 	attr_accessor :choice
-	attr_reader :name
+	attr_reader :opponent
 
 	def initialize(o)
 		@opponent = o
@@ -36,7 +37,7 @@ class Opponent
 	end
 
 	def computer_choice
-		"#{name} chose #{choice}!"
+		"#{opponent} chose #{choice}!"
 	end
 end
 
@@ -49,7 +50,17 @@ class Game
 
 	def initialize
 		@player = Player.new("Ben")
-		@opponent = Opponent.new("Computer")
+		@opponent = Opponent.new("HAL")
+	end
+
+	def compare_choices
+		if player.choice == opponent.choice
+	    puts "It's a tie!"
+	  elsif (player.choice == 'p' && opponent.choice == 'r') || (player.choice == 'r' && opponent.choice  == 's') || (player.choice == 's' && opponent.choice =='p')
+	    "Congratulations! #{player.name} won this round!"
+	  else
+	    puts "Oh no, #{player.name} lost this round! #{opponent.name} wins!"
+	  end
 	end
 
 	def play
@@ -57,6 +68,7 @@ class Game
 		opponent.random_choice
 		puts player.player_choice
 		puts opponent.computer_choice
+		puts compare_choices
 	end
 end
 
