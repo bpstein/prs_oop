@@ -1,3 +1,4 @@
+# Player class for user 
 class Player
 
 	attr_accessor :choice
@@ -6,6 +7,7 @@ class Player
 		@name = n
 	end
 
+	# Request p, r or s input from the user
 	def make_choice
 		begin 
     	puts "Choose either paper(p), rock(r) or scissors(s)."
@@ -22,7 +24,7 @@ end
 
 
 
-
+# Opponent class for computer
 class Opponent
 	attr_accessor :choice
 	attr_reader :opponent
@@ -31,6 +33,7 @@ class Opponent
 		@opponent = o
 	end
 
+	# Generate random choice of p, r or s
 	def random_choice
 		c = Game::CHOICES.keys.sample
 		self.choice = c
@@ -43,7 +46,7 @@ end
 
 
 
-
+# Game engine
 class Game
 	CHOICES = {'p' => 'Paper', 'r' => 'Rock', 's' => 'Scissors'}
 	attr_reader :player, :opponent
@@ -53,6 +56,7 @@ class Game
 		@opponent = Opponent.new("HAL")
 	end
 
+	# Compare the choices of user and computer
 	def compare_choices
 		if player.choice == opponent.choice
 	    puts "It's a tie!"
@@ -72,15 +76,7 @@ class Game
 	end
 end
 
-
-
 game = Game.new.play
 
 
 
-
-
-# puts "Let's play Paper, Scissors, Rock! What's your name?"
-# player = gets.chomp
-# puts "Welcome #{player}, choose either paper (p), rock (r) or scissors(s)."
-# puts hand.value
