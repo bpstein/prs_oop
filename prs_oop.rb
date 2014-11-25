@@ -1,6 +1,5 @@
 # Player class for user 
 class Player
-
 	attr_accessor :choice
 	attr_reader :name
 	def initialize(n)
@@ -10,19 +9,16 @@ class Player
 	# Request p, r or s input from the user
 	def make_choice
 		begin 
-    	puts "Choose either paper(p), rock(r) or scissors(s)."
-    	c = gets.chomp.downcase
-    end until Game::CHOICES.keys.include?(c)
+			puts "Choose either paper(p), rock(r) or scissors(s)."
+			c = gets.chomp.downcase
+		end until Game::CHOICES.keys.include?(c)
 
-    self.choice = c
+		self.choice = c
 	end
 	def player_choice
 		"#{name} chose #{choice}!"
 	end
 end 
-
-
-
 
 # Opponent class for computer
 class Opponent
@@ -45,7 +41,6 @@ class Opponent
 end
 
 
-
 # Game engine
 class Game
 	CHOICES = {'p' => 'Paper', 'r' => 'Rock', 's' => 'Scissors'}
@@ -59,12 +54,12 @@ class Game
 	# Compare the choices of user and computer
 	def compare_choices
 		if player.choice == opponent.choice
-	    puts "It's a tie!"
-	  elsif (player.choice == 'p' && opponent.choice == 'r') || (player.choice == 'r' && opponent.choice  == 's') || (player.choice == 's' && opponent.choice =='p')
-	    "Congratulations! #{player.name} won this round!"
-	  else
-	    puts "Oh no, #{player.name} lost this round! #{opponent.name} wins!"
-	  end
+			puts "It's a tie!"
+		elsif (player.choice == 'p' && opponent.choice == 'r') || (player.choice == 'r' && opponent.choice  == 's') || (player.choice == 's' && opponent.choice =='p')
+			"Congratulations! #{player.name} won this round!"
+		else
+			puts "Oh no, #{player.name} lost this round! #{opponent} wins!"
+		end
 	end
 
 	def play
